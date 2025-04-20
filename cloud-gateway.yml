@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cloud-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: commandes
+          uri: lb://Commandes
+          predicates:
+            - Path=/commandes/**
+        - id: service-utilisateur
+          uri: lb://service-utilisateur
+          predicates:
+            - Path=/utilisateur/**

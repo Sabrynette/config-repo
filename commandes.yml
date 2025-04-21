@@ -32,3 +32,8 @@ eureka:
     register-with-eureka: true
   instance:
     hostname: commandes
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh,health,info

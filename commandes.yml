@@ -1,15 +1,29 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: Commandes
   datasource:
-    url: jdbc:mysql://localhost:3306/commandesdb?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql:3306/commandesdb?createDatabaseIfNotExist=true
     username: root
-    password: root
+    password:
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: commandes-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
 eureka:
   client:
     service-url:
@@ -18,5 +32,3 @@ eureka:
     register-with-eureka: true
   instance:
     hostname: commandes
-server:
-  port: 8081

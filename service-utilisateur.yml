@@ -2,35 +2,5 @@ server:
   port: 8082
 
 spring:
-  config:
-    import: configserver:http://config-server:8888
   application:
     name: service-utilisateur
-  datasource:
-    url: jdbc:mysql://mysql:3306/usersdb?createDatabaseIfNotExist=true
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  kafka:
-    bootstrap-servers: kafka:9092
-    consumer:
-      group-id: utilisateur-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh,health,info

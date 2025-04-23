@@ -2,40 +2,5 @@ server:
   port: 8081
 
 spring:
-  config:
-    import: configserver:http://config-server:8888
   application:
     name: Commandes
-  datasource:
-    url: jdbc:mysql://mysql:3306/commandesdb?createDatabaseIfNotExist=true
-    username: root
-    password:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  kafka:
-    bootstrap-servers: kafka:9092
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      group-id: commandes-group
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka/
-    fetch-registry: true
-    register-with-eureka: true
-  instance:
-    hostname: commandes
-management:
-  endpoints:
-    web:
-      exposure:
-        include: refresh,health,info

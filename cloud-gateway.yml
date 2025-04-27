@@ -1,6 +1,5 @@
 server:
   port: 8080
-
 spring:
   application:
     name: cloud-gateway
@@ -15,3 +14,7 @@ spring:
           uri: lb://service-utilisateur
           predicates:
             - Path=/utilisateur/**
+eureka:
+  client:
+    service-url:
+      defaultZone: http://serveur-eureka:8761/eureka

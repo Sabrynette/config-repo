@@ -1,6 +1,21 @@
 server:
   port: 8081
-
 spring:
   application:
     name: Commandes
+  kafka:
+    bootstrap-servers: kafka:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: commandes-group
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+eureka:
+  client:
+    service-url:
+      defaultZone: http://serveur-eureka:8761/eureka
+logging:
+  level:
+    root: INFO
